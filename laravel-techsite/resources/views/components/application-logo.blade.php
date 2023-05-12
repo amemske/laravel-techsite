@@ -1,0 +1,1 @@
+<img src="{{ asset('/logo/heligonsystems_logo.png')}}" width="200px" />
