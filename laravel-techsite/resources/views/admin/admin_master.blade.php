@@ -27,6 +27,10 @@
         <!-- App Css-->
         <link href="{{ asset('backend/assets/css/app.min.css') }} " id="app-style" rel="stylesheet" type="text/css" />
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
     </head>
 
     <body data-topbar="dark">
@@ -65,10 +69,18 @@
         <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }} "></script>
 
 
-        <!-- apexcharts -->
-        <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }} "></script>
+        <!-- apexcharts
 
-        <!-- jquery.vectormap map -->
+        <!--tinymce js-->
+    <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
+
+    <!-- init js -->
+    <script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }}"></script>
+
+
+
+
+    <!-- jquery.vectormap map -->
         <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }} "></script>
         <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js') }} "></script>
 
@@ -80,10 +92,36 @@
         <script src="{{ asset('backend/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }} "></script>
         <script src="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }} "></script>
 
-        <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }} "></script>
 
         <!-- App js -->
         <script src="{{ asset('backend/assets/js/app.js') }} "></script>
-    </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        @if(Session::has('message'))
+        const type = "{{ Session::get('alert-type','info') }}";
+        switch(type){
+            case 'info':
+                toastr.info(" {{ Session::get('message') }} ");
+                break;
+
+            case 'success':
+                toastr.success(" {{ Session::get('message') }} ");
+                break;
+
+            case 'warning':
+                toastr.warning(" {{ Session::get('message') }} ");
+                break;
+
+            case 'error':
+                toastr.error(" {{ Session::get('message') }} ");
+                break;
+        }
+        @endif
+
+    </script>
+
+        </body>
 
 </html>
