@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,10 +53,28 @@ Route::controller(AboutController::class)->group(function() {
     Route::get('/about/page', 'createAboutPage')->name('about.page');
     Route::post('/update/about', 'updateAboutPage')->name('update.about');
     Route::get('/about', 'mainAboutPage')->name('main.about.page');
+    Route::get('/about/multi/image', 'aboutMultiImage')->name('about.multi.image');
+    Route::post('/store/multi/image', 'storeMultiImage')->name('store.multi.image');
+    Route::get('/all/multi/image', 'allMultiImage')->name('all.multi.image');
+    Route::get('/edit/multi/image/{id}', 'editMultiImage')->name('edit.multi.image');
+    Route::post('/update/multi/image', 'updateMultiImage')->name('update.multi.image');
+    Route::get('/delete/multi/image/{id}', 'deleteMultiImage')->name('delete.multi.image');
 });
 
 Route::controller(FooterController::class)->group(function() {
     Route::get('/footer/setup', 'footerSetup')->name('footer.setup');
+    Route::post('/update/setup', 'updateFooter')->name('update.footer');
+});
+
+Route::controller(ContactController::class)->group(function() {
+    Route::get('/contact', 'contact')->name('contact.me');
+    Route::post('/store', 'storeMessage')->name('store.message');
+});
+
+Route::controller(PortfolioController::class)->group(function() {
+    Route::get('/all/portfolio', 'allPortfolio')->name('all.portfolio');
+    Route::get('/create/portfolio', 'createPortfolio')->name('create.portfolio');
+    Route::post('/store/portfolio', 'storePortfolio')->name('store.portfolio');
 });
 
 require __DIR__.'/auth.php';

@@ -17,7 +17,7 @@
 
                         <div class="card-body">
                             <h4 class="card-title pb-4">Edit  Footer Page</h4>
-                            <form method="post" action="{{ route('update.about') }}" >
+                            <form method="post" action="{{ route('update.footer') }}" >
                                 @csrf
                                 <input type="hidden" name="id" value="{{$allfooter->id}}" >
                                 <div class="row mb-3">
@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Twitter</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="text"  name="twitter" id="twitter" value="{{$allfooter->twitter}}">
                                     </div>

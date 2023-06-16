@@ -24,8 +24,10 @@
                         <span>All pages Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('home.slide')}} ">Home Slide</a></li>
-                        <li><a href="{{route('about.page')}} ">About page</a></li>
+                        <li><a href="{{route('home.slide')}} ">Home slide</a></li>
+                        <li><a href="{{route('about.page')}} ">Add About page</a></li>
+                        <li><a href="{{route('about.multi.image')}} ">Add multi image</a></li>
+                        <li><a href="{{route('all.multi.image')}} ">Display multi images</a></li>
                     </ul>
 
                 </li>
@@ -40,6 +42,16 @@
                             <a href="javascript: void(0);" class="has-arrow">Footer setup</a>
                             <ul class="sub-menu" aria-expanded="true">
                                 <li><a href="{{route('footer.setup')}}"> Footer</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">Portfolio setup</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="{{route('all.portfolio')}}"> All portfolio</a></li>
+                                <li><a href="{{route('create.portfolio')}}"> Create portfolio</a></li>
                             </ul>
                         </li>
 
