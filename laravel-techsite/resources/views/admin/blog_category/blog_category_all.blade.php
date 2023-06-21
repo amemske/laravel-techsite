@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Display Portfolio Data</h4>
+                        <h4 class="mb-sm-0">Display Blog Category Data</h4>
                     </div>
                 </div>
             </div>
@@ -29,9 +29,7 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Portfolio name </th>
-                                    <th>Portfolio Title</th>
-                                    <th>Portfolio Image</th>
+                                    <th>Blog category name </th>
                                     <th>Action</th>
 
                                 </tr>
@@ -42,15 +40,13 @@
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach ($portfolio as $item)
+                                @foreach ($blogCategory as $item)
 
 
 
                                     <tr>
                                         <td>{{$i++}}</td>
-                                        <td>{{$item->portfolio_name}}</td>
-                                        <td>{{$item->portfolio_title}}</td>
-                                        <td><img src="{{asset($item->portfolio_image)}}" width="50" height="40"></td>
+                                        <td>{{$item->blog_category}}</td>
 
 
                                         <td>
@@ -58,7 +54,7 @@
                                             <a href="{{route('edit.blog.category', $item->id)}}" class="btn btn-info sm">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="{{route('delete.portfolio', $item->id)}}" class="btn btn-danger sm" id="delete">
+                                            <a href="{{route('delete.blog.category', $item->id)}}" class="btn btn-danger sm" id="delete">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>

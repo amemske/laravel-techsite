@@ -56,7 +56,17 @@
                         </li>
 
                     </ul>
-                </li>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">Blog setup</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="{{route('all.blog.category')}}"> All Blog Category</a></li>
+                                <li><a href="{{route('add.blog.category')}}"> Add Blog Category</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
 
                 <li class="menu-title">Pages</li>
 
