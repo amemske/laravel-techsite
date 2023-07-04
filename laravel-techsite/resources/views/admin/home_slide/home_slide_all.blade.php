@@ -7,9 +7,6 @@
     <div class="page-content">
         <div class="container-fluid">
 
-
-
-
             <div class="row">
                 <div class="col-md-6">
 
@@ -20,23 +17,23 @@
                             <h4 class="card-title pb-4">Home Slide page</h4>
                             <form method="post" action="{{ route('update.slider') }}" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="id" value="{{$homeslide->id}}" >
+                                <input type="hidden" name="id" value="{{ $homeslide ? $homeslide->id : '' }}" >
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text"  name="title" id="title" value="{{$homeslide->title}}">
+                                        <input class="form-control" type="text"  name="title" id="title" value="{{ $homeslide ? $homeslide->title : '' }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Short title</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text"  name="short_title" id="short_title" value="{{$homeslide->short_title}}">
+                                        <input class="form-control" type="text"  name="short_title" id="short_title" value="{{ $homeslide ? $homeslide->short_title : '' }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Video Url</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="video_url"  id="video_url" value="{{$homeslide->video_url}}">
+                                        <input class="form-control" type="text" name="video_url"  id="video_url" value="{{ $homeslide ? $homeslide->video_url : '' }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -48,7 +45,11 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
-                                        <img id="showImage" class="rounded-circle avatar-xl" alt="200x200" src="{{ (!empty($homeslide->home_slide))? url($homeslide->home_slide) : url('upload/no_image.png')}}" data-holder-rendered="true">
+                                        @if ($homeslide && $homeslide->home_slide)
+                                            <img id="showImage" class="rounded-circle avatar-xl" alt="200x200" src="{{ url($homeslide->home_slide) }}" data-holder-rendered="true">
+                                        @else
+                                            <img id="showImage" class="rounded-circle avatar-xl" alt="200x200" src="{{ url('upload/no_image.png') }}" data-holder-rendered="true">
+                                        @endif
                                     </div>
                                 </div>
 
@@ -59,14 +60,14 @@
 
                 </div><!-- end col -->
 
-
-
             </div>
 
         </div>
 
     </div>
-    <script type="text/javascript">
+
+
+            <script type="text/javascript">
         $(document).ready(function() {
             //listens for the "change" event, which typically occurs when the user selects a file using an input of type "file".
             $('#image').change(function(e) {

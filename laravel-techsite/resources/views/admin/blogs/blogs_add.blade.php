@@ -2,6 +2,14 @@
 
 @section('admin')
 
+    <style type="text/css">
+        .bootstrap-tagsinput .tag{
+            margin-right: 2px;
+            color: #b70000;
+            font-weight: 700;
+        }
+    </style>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <div class="page-content">
@@ -17,53 +25,65 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <h4 class="card-title pb-4">Edit About Page</h4>
-                            <form method="post" action="{{ route('update.about') }}" enctype="multipart/form-data">
+                            <h4 class="card-title pb-4">Add Blog Page</h4>
+                            <form method="post" action="{{ route('store.blog') }}" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="id" value="{{$aboutpage ? $aboutpage->id: ''}}" >
+
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Blog category</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text"  name="title" id="title" value="{{ $aboutpage ? $aboutpage->title : ''}}">
+                                        <select name="blog_category_id" class="form-select" aria-label="Default select example">
+                                            <option selected="">Open this select menu</option>
+                                            @foreach($blogCategories as $cat)
+                                                <option value="{{$cat->id}}">{{$cat->blog_category}}</option>
+                                            @endforeach
+
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Short title</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Blog title</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text"  name="short_title" id="short_title" value="{{ $aboutpage ? $aboutpage->short_title: ' '}}">
+                                        <input class="form-control" type="text"  name="blog_title" id="portfolio_title">
+                                        @error('portfolio_title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
+
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Short description</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Blog tags</label>
                                     <div class="col-sm-10">
-                                        <textarea required=""  name="short_description" class="form-control" rows="5">
-                                            {{ $aboutpage ? $aboutpage->short_description : ''}}
-                                        </textarea>
+                                        <input class="form-control" type="text"  name="blog_tags" value="home,tech" data-role="tagsinput">
+                                        @error('portfolio_title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
+
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Long description</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Blog description</label>
                                     <div class="col-sm-10">
-                                        <textarea id="elm1" name="long_description">
-                                            {{ $aboutpage ? $aboutpage->long_description : ''}}
+                                        <textarea id="elm1" name="blog_description">
+
                                         </textarea>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">About Image</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Blog Image</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" name="about_image" type="file"  id="image">
+                                        <input class="form-control" name="blog_image" type="file"  id="image">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
-                                        <img id="showImage" class="rounded-circle avatar-xl" alt="200x200" src="{{ (!empty($aboutpage->about_image))? url($aboutpage->about_image) : url('upload/no_image.png')}}" data-holder-rendered="true">
+                                        <img id="showImage" class="rounded-circle avatar-xl" alt="200x200" src="{{ url('upload/no_image.png')}}" data-holder-rendered="true">
                                     </div>
                                 </div>
 
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update About Page">
+                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Insert Blog Data">
                             </form>
                         </div>
                     </div>
@@ -95,3 +115,4 @@
     </script>
 
 @endsection
+

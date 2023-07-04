@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\BlogCategoryController;
+use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
@@ -91,5 +92,17 @@ Route::controller(BlogCategoryController::class)->group(function() {
     Route::post('/update/blog/category/{id}', 'updateBlogCategory')->name('update.blog.category');
     Route::get('/delete/blog/category/{id}', 'deleteBlogCategory')->name('delete.blog.category');
 });
+
+Route::controller(BlogController::class)->group(function() {
+    Route::get('/all/blog', 'allBlog')->name('all.blog');
+    Route::get('/add/blog', 'addBlog')->name('add.blog');
+    Route::post('/store/blog', 'storeBlog')->name('store.blog');
+    Route::get('/edit/blog/{id}', 'editBlog')->name('edit.blog');
+    Route::get('/delete/blog/{id}', 'deleteBlog')->name('delete.blog');
+    Route::post('/update/blog/', 'updateBlog')->name('update.blog');
+    Route::get('/blog/details/{id}', 'blogDetails')->name('blog.details');
+    Route::get('/category/blog/{id}', 'categoryBlog')->name('category.blog');
+});
+
 
 require __DIR__.'/auth.php';

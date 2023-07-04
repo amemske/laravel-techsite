@@ -14,7 +14,7 @@ class BlogCategoryController extends Controller
     public function allBlogCategory()
     {
         //access the db
-        //get all the dat
+        //get all the data
         //pass data to the view
         $blogCategory = BlogCategory::latest()->get();
         return view('admin.blog_category.blog_category_all', compact('blogCategory'));
