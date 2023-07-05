@@ -71,6 +71,17 @@
 
                     </ul>
 
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">Contact setup</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="{{route('contact.message')}}"> Contact message</a></li>
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
 
 
 

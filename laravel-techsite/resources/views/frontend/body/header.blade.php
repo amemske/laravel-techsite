@@ -25,11 +25,8 @@
                                             <li><a href="portfolio-details.html">Portfolio Details</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item-has-children"><a href="#">Our Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog.html">Our News</a></li>
-                                            <li><a href="blog-details.html">News Details</a></li>
-                                        </ul>
+                                    <li class="{{Route::currentRouteName() === 'blog' ? 'active': ''}}"><a href="{{route('blog')}}">Our Blog</a>
+
                                     </li>
                                     <li class="{{Route::currentRouteName() === 'contact.me' ? 'active': ''}}"><a href="{{route('contact.me')}}">contact me</a></li>
                                 </ul>

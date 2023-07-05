@@ -31,11 +31,11 @@ class BlogCategoryController extends Controller
         //insert data into the db using insert()
         //Once data is inserted send a notification
 
-        $request->validate([
-            'blog_category' => 'required',
-        ], [
-            'blog_category.required' => 'Blog category name is required',
-        ]);
+//        $request->validate([
+//            'blog_category' => 'required',
+//        ], [
+//            'blog_category.required' => 'Blog category name is required',
+//        ]);
 
 
         BlogCategory::insert([

@@ -32,12 +32,23 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::controller(AdminController::class)->group(function() {
-    Route::get('/admin/logout', 'destroy')->name('admin.logout');
-    Route::get('/admin/profile', 'profile')->name('admin.profile');
-    Route::get('/admin/edit_profile', 'editProfile')->name('admin.edit_profile');
-    Route::post('/admin/store_profile', 'storeProfile')->name('admin.store_profile');
-});
+Route::middleware(['auth'])->group(function () { //prevent access unless logged in
+
+    Route::controller(AdminController::class)->group(function() {
+        Route::get('/admin/logout', 'destroy')->name('admin.logout');
+        Route::get('/admin/profile', 'profile')->name('admin.profile');
+        Route::get('/admin/edit_profile', 'editProfile')->name('admin.edit_profile');
+        Route::post('/admin/store_profile', 'storeProfile')->name('admin.store_profile');
+    });
+
+    Route::controller(FooterController::class)->group(function() {
+        Route::get('/footer/setup', 'footerSetup')->name('footer.setup');
+        Route::post('/update/setup', 'updateFooter')->name('update.footer');
+    });
+
+    });
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -63,14 +74,14 @@ Route::controller(AboutController::class)->group(function() {
     Route::get('/delete/multi/image/{id}', 'deleteMultiImage')->name('delete.multi.image');
 });
 
-Route::controller(FooterController::class)->group(function() {
-    Route::get('/footer/setup', 'footerSetup')->name('footer.setup');
-    Route::post('/update/setup', 'updateFooter')->name('update.footer');
-});
+
 
 Route::controller(ContactController::class)->group(function() {
     Route::get('/contact', 'contact')->name('contact.me');
     Route::post('/store', 'storeMessage')->name('store.message');
+    Route::get('/contact/message', 'contactMessage')->name('contact.message');
+    Route::get('/delete/message/{id}', 'deleteMessage')->name('delete.message');
+
 });
 
 Route::controller(PortfolioController::class)->group(function() {
@@ -102,6 +113,8 @@ Route::controller(BlogController::class)->group(function() {
     Route::post('/update/blog/', 'updateBlog')->name('update.blog');
     Route::get('/blog/details/{id}', 'blogDetails')->name('blog.details');
     Route::get('/category/blog/{id}', 'categoryBlog')->name('category.blog');
+    Route::get('/blog', 'mainBlog')->name('blog');
+
 });
 
 

@@ -152,4 +152,12 @@ class BlogController extends Controller
         return view('frontend.cat_blog_details', compact('blogpost', 'allBlogs', 'blogCategories', 'chosenCategories'));
 
     }//end method
+
+    public function mainBlog(){
+        $blogCategories = BlogCategory::orderBy('blog_category', 'ASC')->get();
+        $allBlogs = Blog::latest()->limit(5)->get();
+
+        return view('frontend.blog', compact( 'allBlogs', 'blogCategories', 'allBlogs'));
+
+    }
 }

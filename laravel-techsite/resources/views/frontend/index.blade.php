@@ -1,5 +1,9 @@
 @extends('frontend.main_master')
 @section('main')
+
+    @section('title')
+        Home |  learning site
+    @endsection
 <!-- banner-area -->
 @include('frontend.home_all.home_slider')
 <!-- banner-area-end -->
@@ -72,7 +76,9 @@
             <div class="col-xl-3">
                 <div class="services__item">
                     <div class="services__thumb">
-                        <a href="services-details.html"><img src={{ asset('frontend/assets/img/images/services_img03.jpg') }}" alt=""></a>
+                        <a href="services-details.html">
+                            <img src="{{ asset('frontend/assets/img/images/services_img03.jpg') }}"  alt="">
+                        </a>
                     </div>
                     <div class="services__content">
                         <div class="services__icon">
